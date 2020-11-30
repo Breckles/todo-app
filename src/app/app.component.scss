@@ -1,0 +1,19 @@
+@use './dark-theme';
+@use './light-theme';
+
+#appComponentWrapper {
+  width: 100vw;
+  height: 100vh;
+
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#appComponentWrapper.darkTheme {
+  background-image: url('../assets/images/bg-mobile-dark.jpg');
+  background-color: dark-theme.$bg-main;
+}
+
+#appComponentWrapper.lightTheme {
+  background-image: url('../assets/images/bg-mobile-light.jpg');
+}
