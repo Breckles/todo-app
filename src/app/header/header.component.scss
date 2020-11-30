@@ -1,0 +1,36 @@
+@use '../dark-theme';
+@use '../light-theme';
+
+#headerWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+
+  h1 {
+    color: white;
+    font-size: 2.8rem;
+    line-height: 2.5rem;
+    letter-spacing: 1rem;
+  }
+
+  #themeToggle {
+    height: 2rem;
+    width: 2rem;
+    background-size: contain;
+  }
+}
+
+#headerWrapper.darkTheme {
+  #themeToggle {
+    background-image: url('../../assets/images/icon-sun.svg');
+  }
+}
+
+#headerWrapper.lightTheme {
+  #themeToggle {
+    background-image: url('../../assets/images/icon-moon.svg');
+  }
+}

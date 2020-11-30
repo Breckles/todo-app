@@ -17,3 +17,9 @@
 #appComponentWrapper.lightTheme {
   background-image: url('../assets/images/bg-mobile-light.jpg');
 }
+
+header {
+  app-header {
+    display: block;
+  }
+}
