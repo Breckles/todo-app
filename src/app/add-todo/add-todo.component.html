@@ -1,12 +1,13 @@
 <div id="addToDoWrapper"
      class="darkTheme">
-  <form (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit(f)"
+        #f="ngForm">
     <label for="toDoItem">Create a new todo...</label>
     <div id="checkCircle">
     </div>
     <input id="toDoItem"
            type="text"
-           [(ngModel)]="toDoItem"
+           [(ngModel)]="todo"
            name="toDoItem"
            placeholder="Create a new todo..."
            required>

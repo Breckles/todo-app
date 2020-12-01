@@ -26,6 +26,11 @@ export class TodoListService {
     this.listChanged.next([...this.todoItems]);
   }
 
+  public addTodoItem(newItem: TodoItem): void {
+    this.todoItems.unshift(newItem);
+    this.listChanged.next([...this.todoItems]);
+  }
+
   public deleteTodoItem(index: number): void {
     this.todoItems.splice(index, 1);
     this.listChanged.next([...this.todoItems]);
