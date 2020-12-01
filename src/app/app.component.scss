@@ -2,9 +2,10 @@
   --bg-main: hsl(235, 21%, 11%);
   --bg-secondary: hsl(235, 24%, 19%);
   --text-main: hsl(234, 39%, 85%);
+  --text-secondary: hsl(234, 11%, 52%);
   --light-grayish-blue-hover: hsl(236, 33%, 92%);
-  --dark-grayish-blue: hsl(234, 11%, 52%);
-  --very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --todo-list-item-border-color: hsl(233, 14%, 35%);
+  --todo-item-completed-text-color: hsl(233, 14%, 35%);
   --check-circle-border-color: hsl(237, 14%, 26%);
   --banner-image: url('../assets/images/bg-mobile-dark.jpg');
 }
@@ -20,11 +21,12 @@
 
 #appComponentWrapper {
   --bright-blue: hsl(220, 98%, 61%);
-  --check-background: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+  --status-button-bg-color: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
   width: 100vw;
   height: 100vh;
 
+  background-color: var(--bg-main);
   background-image: var(--banner-image);
   background-repeat: no-repeat;
   background-size: contain;
@@ -41,7 +43,12 @@
     app-add-todo {
       display: block;
       width: 100%;
-      height: 5rem;
+      height: 4.9rem;
+      margin-bottom: 1rem;
+    }
+
+    app-todo-list {
+      display: block;
     }
   }
 }

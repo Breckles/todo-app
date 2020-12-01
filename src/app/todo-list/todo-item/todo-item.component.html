@@ -1,0 +1,11 @@
+<div id="todoItemWrapper">
+  <button id="statusToggle"
+          [ngClass]='todoItem.getStatus()'
+          (click)="toggleStatus()">
+  </button>
+  <div id="todo"
+       [ngClass]="todoItem.getStatus()">{{ todoItem.getTodo() }}</div>
+  <button id="deleteButton"
+          type="button"
+          (click)="deleteItem()"></button>
+</div>

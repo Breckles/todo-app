@@ -1,0 +1,23 @@
+<div id="todoListWrapper">
+  <ul id="todoList">
+    <li *ngFor="let item of todoItemList; index as i"
+        class="todoItem">
+      <app-todo-item [todoItem]='item'
+                     [index]="i"></app-todo-item>
+    </li>
+    <li id="listInfo">
+      <div id="itemsLeft"
+           [ngPlural]="todoItemList.length">
+        <ng-template ngPluralCase="=0">You have no todos</ng-template>
+        <ng-template ngPluralCase="=1">{{todoItemList.length}} item left</ng-template>
+        <ng-template ngPluralCase="other">{{todoItemList.length}} items left</ng-template>
+      </div>
+      <button id="clearCompletedButton"
+              type="button"
+              *ngIf="todoItemList.length > 0"
+              (click)="clearCompletedItems()">
+        Clear Completed
+      </button>
+    </li>
+  </ul>
+</div>
