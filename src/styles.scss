@@ -7,9 +7,10 @@
 }
 
 html {
+  --font-family: 'Josefin Sans', sans-serif;
   // Set document-wide 'rem' value
   font-size: 10px;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: var(--font-family);
 }
 
 body {

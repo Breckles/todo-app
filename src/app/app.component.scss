@@ -7,7 +7,24 @@
 
   background-repeat: no-repeat;
   background-size: contain;
+
+  header {
+    padding: 4.5rem 2.5rem;
+
+    app-header {
+      display: block;
+    }
+  }
+
+  main {
+    app-add-todo {
+      display: block;
+      width: 100%;
+      height: 5rem;
+    }
+  }
 }
+
 
 #appComponentWrapper.darkTheme {
   background-image: url('../assets/images/bg-mobile-dark.jpg');
@@ -16,12 +33,4 @@
 
 #appComponentWrapper.lightTheme {
   background-image: url('../assets/images/bg-mobile-light.jpg');
-}
-
-header {
-  padding: 4.5rem 2.5rem;
-
-  app-header {
-    display: block;
-  }
 }
