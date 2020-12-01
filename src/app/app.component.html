@@ -1,8 +1,7 @@
 <div id="appComponentWrapper"
-     class="darkTheme">
-
+     [ngClass]='currentTheme'>
   <header>
-    <app-header></app-header>
+    <app-header (themeChanged)="toggleTheme($event)"></app-header>
   </header>
 
   <main>
