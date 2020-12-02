@@ -1,14 +1,33 @@
 #todoListWrapper {
+  display: flex;
   width: 100%;
   height: 100%;
+
+  transition: transform 350ms ease-in-out;
 }
 
-ul#todoList {
+#todoListWrapper.all {
+  transform: translateX(0);
+}
+
+#todoListWrapper.active {
+  transform: translateX(-100%);
+}
+
+#todoListWrapper.completed {
+  transform: translateX(-200%);
+}
+
+ul.todoList {
   --border-radius: 5px;
 
+  flex: 1 0 100%;
+  display: flex;
+  flex-direction: column;
+
   list-style-type: none;
-  background-color: var(--bg-secondary);
   border-radius: var(--border-radius);
+  background-color: var(--bg-secondary);
 
   li {
     height: 5.2rem;
@@ -30,11 +49,12 @@ ul#todoList {
     }
   }
 
-  li#listInfo {
+  #listInfo {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
+    margin-top: auto;
 
     border-bottom-left-radius: var(--border-radius);
     border-bottom-right-radius: var(--border-radius);

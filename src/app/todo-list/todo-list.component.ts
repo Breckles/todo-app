@@ -12,6 +12,8 @@ import { TodoListService } from './todo-list.service';
 export class TodoListComponent implements OnInit {
   public todoItemList!: TodoItem[];
   private listChangedSub!: Subscription;
+  public currentFilter = 'all';
+  private filterChangedSub!: Subscription;
 
   constructor(private tls: TodoListService) {}
 
@@ -20,6 +22,11 @@ export class TodoListComponent implements OnInit {
     this.listChangedSub = this.tls.listChanged.subscribe(() => {
       this.todoItemList = this.tls.getTodoItems();
     });
+    this.filterChangedSub = this.tls.filterChanged.subscribe(
+      (filter: string) => {
+        this.currentFilter = filter;
+      }
+    );
   }
 
   clearCompletedItems(): void {
@@ -31,5 +38,6 @@ export class TodoListComponent implements OnInit {
 
   ngOnDestroy() {
     this.listChangedSub.unsubscribe();
+    this.filterChangedSub.unsubscribe();
   }
 }

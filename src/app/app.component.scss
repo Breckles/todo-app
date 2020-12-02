@@ -20,7 +20,7 @@
 }
 
 #appComponentWrapper {
-  --bright-blue: hsl(220, 98%, 61%);
+  --filter-active-color: hsl(220, 98%, 61%);
   --status-button-bg-color: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
   width: 100vw;
@@ -42,13 +42,18 @@
   main {
     app-add-todo {
       display: block;
-      width: 100%;
       height: 4.9rem;
       margin-bottom: 1rem;
     }
 
     app-todo-list {
       display: block;
+    }
+
+    app-todo-filter {
+      display: block;
+      height: 4.9rem;
+      margin-top: 1rem;
     }
   }
 }

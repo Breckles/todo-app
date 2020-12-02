@@ -14,6 +14,8 @@ export class TodoListService {
   ];
 
   public listChanged = new Subject<TodoItem[]>();
+  private currentFilter = 'all';
+  public filterChanged = new Subject<string>();
 
   constructor() {}
 
@@ -34,5 +36,13 @@ export class TodoListService {
   public deleteTodoItem(index: number): void {
     this.todoItems.splice(index, 1);
     this.listChanged.next([...this.todoItems]);
+  }
+
+  public getFilter(): string {
+    return this.currentFilter;
+  }
+  public setFilter(newFilter: string): void {
+    this.currentFilter = newFilter;
+    this.filterChanged.next(this.currentFilter);
   }
 }

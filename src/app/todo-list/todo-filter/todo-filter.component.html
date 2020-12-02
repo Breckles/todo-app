@@ -1,0 +1,14 @@
+<div id="todoFilterWrapper">
+  <button id="allButton"
+          type="button"
+          [ngClass]="{'active': currentFilter === 'all' }"
+          (click)="onFilterSelect('all')">All</button>
+  <button id="activeButton"
+          type="button"
+          [ngClass]="{'active': currentFilter === 'active' }"
+          (click)="onFilterSelect('active')">Active</button>
+  <button id="completedButton"
+          type="button"
+          [ngClass]="{'active': currentFilter === 'completed' }"
+          (click)="onFilterSelect('completed')">Completed</button>
+</div>
