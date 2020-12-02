@@ -15,12 +15,20 @@ export class TodoListComponent implements OnInit {
   public currentFilter = 'all';
   private filterChangedSub!: Subscription;
 
+  public numActiveItems!: number;
+
   constructor(private tls: TodoListService) {}
 
   ngOnInit(): void {
     this.todoItemList = this.tls.getTodoItems();
+    this.numActiveItems = this.todoItemList.filter(
+      (todoItem) => todoItem.getStatus() === Status.active
+    ).length;
     this.listChangedSub = this.tls.listChanged.subscribe(() => {
       this.todoItemList = this.tls.getTodoItems();
+      this.numActiveItems = this.todoItemList.filter(
+        (todoItem) => todoItem.getStatus() === Status.active
+      ).length;
     });
     this.filterChangedSub = this.tls.filterChanged.subscribe(
       (filter: string) => {
@@ -29,11 +37,19 @@ export class TodoListComponent implements OnInit {
     );
   }
 
-  clearCompletedItems(): void {
+  public clearCompletedItems(): void {
     let activeItemsList = this.todoItemList.filter(
       (todoItem) => todoItem.getStatus() === Status.active
     );
     this.tls.setTodoItems(activeItemsList);
+  }
+
+  public updateNumActiveItems(status: Status) {
+    if (status === Status.active) {
+      this.numActiveItems += 1;
+    } else {
+      this.numActiveItems -= 1;
+    }
   }
 
   ngOnDestroy() {

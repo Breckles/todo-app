@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TodoListService } from '../todo-list.service';
 import { Status, TodoItem } from './todo-item.model';
 
@@ -12,6 +12,8 @@ export class TodoItemComponent implements OnInit {
   public todoItem!: TodoItem;
   @Input()
   public index!: number;
+  @Output()
+  public statusChanged = new EventEmitter<Status>();
 
   constructor(private tls: TodoListService) {}
 
@@ -23,6 +25,7 @@ export class TodoItemComponent implements OnInit {
     } else {
       this.todoItem.setStatus(Status.active);
     }
+    this.statusChanged.emit(this.todoItem.getStatus());
   }
 
   deleteItem(): void {
