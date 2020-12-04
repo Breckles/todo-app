@@ -1,3 +1,5 @@
+@use '../breakpoints';
+
 #headerWrapper {
   display: flex;
   align-items: center;
@@ -29,5 +31,27 @@
 
   button#themeToggle.lightTheme {
     background-image: url('../../assets/images/icon-moon.svg');
+  }
+}
+
+
+//////////////////////////////////////////////////////////////////////
+
+//// Wider screen layout ////////////////////////////////////////
+
+@media screen and (min-width: breakpoints.$widescreen) {
+  #headerWrapper {
+    h1 {
+      font-size: 4rem;
+    }
+
+    button#themeToggle {
+      width: 2.6rem;
+      height: 2.6rem;
+    }
+
+    button#themeToggle:hover {
+      cursor: pointer;
+    }
   }
 }

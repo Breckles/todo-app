@@ -1,3 +1,5 @@
+@use './breakpoints';
+
 #appComponentWrapper.darkTheme {
   --bg-main: hsl(235, 21%, 11%);
   --bg-secondary: hsl(235, 24%, 19%);
@@ -28,13 +30,14 @@
 }
 
 #appComponentWrapper {
+  --breakpoint-wide-screen: 800px;
   --filter-active-color: hsl(220, 98%, 61%);
   --status-button-bg-color: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
 
   position: relative;
   padding: 0 2.5rem;
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
   background-color: var(--bg-main);
   background-image: var(--banner-image);
@@ -42,6 +45,7 @@
   background-size: contain;
 
   header {
+    width: 100%;
     padding: 4.5rem 0 3.5rem;
 
     app-header {
@@ -50,6 +54,8 @@
   }
 
   main {
+    overflow-x: hidden;
+
     app-add-todo {
       display: block;
       height: 4.9rem;
@@ -68,6 +74,15 @@
       height: 4.9rem;
       margin-top: 1rem;
     }
+  }
+
+  #dragInfo {
+    padding: 5rem 0;
+    text-align: center;
+
+    color: var(--text-secondary);
+    opacity: 0.7;
+    font-size: 1.4rem;
   }
 
   footer {
@@ -89,4 +104,60 @@
       color: hsl(228, 45%, 44%);
     }
   }
+}
+
+//// Tablet layout ////////////////////////////////////////////////
+
+@media screen and (min-width: breakpoints.$tablet) {
+  #appComponentWrapper {
+
+    main {
+      app-add-todo {
+        height: 6.4rem;
+        margin-bottom: 2.35rem;
+      }
+
+      app-todo-filter {
+        bottom: 6.3rem;
+        height: 4.5rem;
+        margin: -0.1rem 30% 0;
+      }
+    }
+
+    #dragInfo {
+      padding-top: 0;
+    }
+  }
+}
+
+
+//// Wider screen layout ////////////////////////////////////////
+
+@media screen and (min-width: breakpoints.$widescreen) {
+  #appComponentWrapper.darkTheme {
+    background-image: url('../assets/images/bg-desktop-dark.jpg');
+  }
+
+  #appComponentWrapper.lightTheme {
+    background-image: url('../assets/images/bg-desktop-light.jpg');
+  }
+
+  #appComponentWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    // padding: 0 31.5%;
+
+    &>* {
+      max-width: 53.5rem;
+    }
+
+    header {
+      padding: 8rem 0 4.8rem;
+    }
+
+
+  }
+
 }

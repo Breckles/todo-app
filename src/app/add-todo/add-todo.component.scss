@@ -1,4 +1,6 @@
-#addToDoWrapper {
+@use '../breakpoints';
+
+#addTodoWrapper {
   --border-radius: 5px;
 
   width: 100%;
@@ -42,4 +44,42 @@
       font-size: 1.2rem;
     }
   }
+}
+
+//// Tablet layout ////////////////////////////////////////////////
+
+@media screen and (min-width: breakpoints.$tablet) {
+  #addTodoWrapper {
+    form {
+      #checkCircle {
+        flex: 1 0 2.5rem;
+        height: 2.5rem;
+        margin: 0 2.2rem 0 2.5rem;
+      }
+
+      input {
+        padding-top: 0.4rem;
+        font-size: 1.8rem;
+      }
+    }
+  }
+}
+
+//// Wider screen layout ////////////////////////////////////////
+
+@media screen and (min-width: breakpoints.$widescreen) {
+  // #addTodoWrapper {
+  //   form {
+  //     #checkCircle {
+  //       flex: 1 0 2.5rem;
+  //       height: 2.5rem;
+  //       margin: 0 2.2rem 0 2.5rem;
+  //     }
+
+  //     input {
+  //       padding-top: 0.4rem;
+  //       font-size: 1.8rem;
+  //     }
+  //   }
+  // }
 }

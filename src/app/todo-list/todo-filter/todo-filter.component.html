@@ -1,14 +1,14 @@
 <div id="todoFilterWrapper">
   <button id="allButton"
           type="button"
-          [ngClass]="{'active': currentFilter === 'all' }"
+          [ngClass]="currentFilter === 'all' ? 'active' : 'inactive'"
           (click)="onFilterSelect('all')">All</button>
   <button id="activeButton"
           type="button"
-          [ngClass]="{'active': currentFilter === 'active' }"
+          [ngClass]="currentFilter === 'active' ? 'active' : 'inactive'"
           (click)="onFilterSelect('active')">Active</button>
   <button id="completedButton"
           type="button"
-          [ngClass]="{'active': currentFilter === 'completed' }"
+          [ngClass]="currentFilter === 'completed' ? 'active' : 'inactive'"
           (click)="onFilterSelect('completed')">Completed</button>
 </div>

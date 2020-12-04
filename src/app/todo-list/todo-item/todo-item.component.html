@@ -2,6 +2,7 @@
   <button id="statusToggle"
           [ngClass]='todoItem.getStatus()'
           (click)="toggleStatus()">
+    <div id="statusToggleInnerCircle"></div>
   </button>
   <div id="todo"
        [ngClass]="todoItem.getStatus()">{{ todoItem.getTodo() }}</div>

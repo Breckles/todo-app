@@ -1,70 +1,64 @@
-<div id="todoListWrapper"
-     [ngClass]='currentFilter'>
-  <ul id="allList"
-      class="todoList"
-      #allList>
-    <div class="liWrapper"
-         *ngFor="let item of todoItemList; index as i">
-      <li class="todoItem">
-        <app-todo-item [todoItem]='item'
-                       [index]="i"
-                       (statusChanged)="updateNumActiveItems($event)"></app-todo-item>
-      </li>
-    </div>
-    <li class="listInfo">
-      <div id="itemsLeft"
-           [ngPlural]="numActiveItems">
-        <ng-template ngPluralCase="=0">You have no todos</ng-template>
-        <ng-template ngPluralCase="=1">{{numActiveItems}} item left</ng-template>
-        <ng-template ngPluralCase="other">{{numActiveItems}} items left</ng-template>
+<div id="todoListWrapper">
+  <div id="todoLists"
+       [ngClass]='currentFilter'>
+
+    <ul id="allList"
+        class="todoList"
+        #allList>
+      <div *ngIf="todoItemList.length === 0">
+        <li class="noTodos">You have no todos. Create some up above.</li>
       </div>
-      <button id="clearCompletedButton"
-              type="button"
-              *ngIf="todoItemList.length > 0"
-              (click)="clearCompletedItems()">
-        Clear Completed
-      </button>
-    </li>
-  </ul>
-  <ul id="activeList"
-      class="todoList"
-      #activeList>
-    <div class="liWrapper"
-         *ngFor="let item of todoItemList; index as i">
-      <li *ngIf="item.getStatus() === 'active'"
-          class="todoItem activeItem">
-        <app-todo-item [todoItem]='item'
-                       [index]="i"
-                       (statusChanged)="updateNumActiveItems($event)"></app-todo-item>
-      </li>
-    </div>
-    <li class="listInfo">
-      <div id="itemsLeft"
-           [ngPlural]="numActiveItems">
-        <ng-template ngPluralCase="=0">You have no todos</ng-template>
-        <ng-template ngPluralCase="=1">{{numActiveItems}} item left</ng-template>
-        <ng-template ngPluralCase="other">{{numActiveItems}} items left</ng-template>
+      <div *ngFor="let item of todoItemList; index as i">
+        <li class="todoItem">
+          <app-todo-item [todoItem]='item'
+                         [index]="i"
+                         (statusChanged)="updateNumActiveItems($event)"></app-todo-item>
+        </li>
       </div>
-    </li>
-  </ul>
-  <ul id="completedList"
-      class="todoList">
-    <div class="liWrapper"
-         *ngFor="let item of todoItemList; index as i">
-      <li *ngIf="item.getStatus() === 'completed'"
-          class="todoItem completedItem">
-        <app-todo-item [todoItem]='item'
-                       [index]="i"></app-todo-item>
-      </li>
+    </ul>
+    <ul id="activeList"
+        class="todoList">
+      <div *ngIf="numActiveItems === 0">
+        <li class="noTodos">You have no active todos. Relax, have a meat snack.</li>
+      </div>
+      <div *ngFor="let item of todoItemList; index as i">
+        <li *ngIf="item.getStatus() === 'active'"
+            class="todoItem activeItem">
+          <app-todo-item [todoItem]='item'
+                         [index]="i"
+                         (statusChanged)="updateNumActiveItems($event)"></app-todo-item>
+        </li>
+      </div>
+    </ul>
+    <ul id="completedList"
+        class="todoList">
+      <div *ngIf="numActiveItems === todoItemList.length">
+        <li class="noTodos">You have no completed todos. Get busy?</li>
+      </div>
+      <div *ngFor="let item of todoItemList; index as i">
+        <li *ngIf="item.getStatus() === 'completed'"
+            class="todoItem completedItem">
+          <app-todo-item [todoItem]='item'
+                         [index]="i"></app-todo-item>
+        </li>
+      </div>
+    </ul>
+  </div>
+
+  <div id="listInfo">
+    <div *ngIf="currentFilter !== 'completed'"
+         id="itemsLeft"
+         [ngPlural]="numActiveItems">
+      <ng-template ngPluralCase="=0">You have no todos</ng-template>
+      <ng-template ngPluralCase="=1">{{numActiveItems}} item left</ng-template>
+      <ng-template ngPluralCase="other">{{numActiveItems}} items left</ng-template>
     </div>
-    <li class="listInfo">
-      <div></div>
-      <button id="clearCompletedButton"
-              type="button"
-              *ngIf="todoItemList.length > 0"
-              (click)="clearCompletedItems()">
-        Clear Completed
-      </button>
-    </li>
-  </ul>
+    <div *ngIf="currentFilter !== 'active'"></div>
+    <button *ngIf="currentFilter !== 'active'"
+            class="clearCompletedButton"
+            type="button"
+            (click)="clearCompletedItems()">
+      Clear Completed
+    </button>
+  </div>
 </div>

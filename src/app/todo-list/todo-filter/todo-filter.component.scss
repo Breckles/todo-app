@@ -1,3 +1,5 @@
+@use '../../breakpoints';
+
 #todoFilterWrapper {
   display: flex;
   align-items: center;
@@ -21,5 +23,21 @@
 
   button.active {
     color: var(--filter-active-color);
+  }
+}
+
+//// Tablet layout ////////////////////////////////////////////////
+
+@media screen and (min-width: breakpoints.$tablet) {}
+
+
+//// Wider screen layout ////////////////////////////////////////
+
+@media screen and (min-width: breakpoints.$widescreen) {
+  #todoFilterWrapper {
+    button.inactive:hover {
+      cursor: pointer;
+      color: var(--text-main);
+    }
   }
 }

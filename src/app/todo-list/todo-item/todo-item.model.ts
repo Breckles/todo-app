@@ -2,8 +2,11 @@ export class TodoItem {
   private todo: string;
   private status: Status = Status.active;
 
-  constructor(todo: string) {
+  constructor(todo: string, status?: Status) {
     this.todo = todo;
+    if (status) {
+      this.status = status;
+    }
   }
 
   public getTodo(): string {

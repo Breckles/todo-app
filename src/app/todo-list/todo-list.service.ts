@@ -1,16 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
-import { TodoItem } from './todo-item/todo-item.model';
+import { Status, TodoItem } from './todo-item/todo-item.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoListService {
-  private todoItems = [
+  private todoItems: TodoItem[] = [
+    new TodoItem('Complete online Javascript course', Status.completed),
     new TodoItem('Jog around the park 3x'),
     new TodoItem('10 minutes meditation'),
     new TodoItem('Read for 1 hour'),
     new TodoItem('Pick up groceries'),
+    new TodoItem('Complete Todo App on Frontend Mentor'),
   ];
 
   public listChanged = new Subject<TodoItem[]>();
