@@ -38,10 +38,8 @@ export class TodoListService {
       parsedList.map((todoItem) => {
         this.todoItems.push(new TodoItem(todoItem['todo'], todoItem['status']));
       });
-      console.log(parsedList);
     }
     let stringified = JSON.stringify(this.todoItems);
-    console.log(stringified);
   }
 
   public updateLocalStorage() {
