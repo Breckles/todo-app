@@ -25,6 +25,7 @@ export class TodoItemComponent implements OnInit {
     } else {
       this.todoItem.setStatus(Status.active);
     }
+    this.tls.setTodoItem(this.todoItem, this.index);
     this.statusChanged.emit(this.todoItem.getStatus());
   }
 

@@ -66,7 +66,8 @@
         <li *ngIf="item.getStatus() === 'completed'"
             class="todoItem completedItem">
           <app-todo-item [todoItem]='item'
-                         [index]="i"></app-todo-item>
+                         [index]="i"
+                         (statusChanged)="updateNumActiveItems($event)"></app-todo-item>
         </li>
       </div>
     </ul>

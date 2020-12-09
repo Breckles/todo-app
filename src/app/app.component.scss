@@ -149,8 +149,11 @@
 
     // padding: 0 31.5%;
 
-    &>* {
-      max-width: 53.5rem;
+    header,
+    main,
+    #dragInfo,
+    footer {
+      width: 53.5rem;
     }
 
     header {

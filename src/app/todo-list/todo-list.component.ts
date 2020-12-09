@@ -75,12 +75,6 @@ export class TodoListComponent implements OnInit {
   public drop(e: CdkDragDrop<string[]>) {
     console.log('item dropped');
     moveItemInArray(this.todoItemList, e.previousIndex, e.currentIndex);
-    // console.log(e);
-    // console.log(this.todoItemList);
-
-    // window.setTimeout(() => {
-    //   console.log(this.todoItemList);
-    // }, 1000);
     this.tls.setTodoItems(this.todoItemList);
   }
 
