@@ -53,6 +53,8 @@ body.lightTheme {
 
 
 div.cdk-drag-preview {
+  --status-button-bg-color: linear-gradient(to bottom right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+
   position: absolute;
   display: flex;
   align-items: center;
@@ -61,14 +63,17 @@ div.cdk-drag-preview {
   opacity: 0.7;
   background-color: var(--bg-secondary);
 
-
+  button.statusToggle.completed {
+    border: none;
+    background-image: url('./assets/images/icon-check.svg'), var(--status-button-bg-color);
+    background-repeat: no-repeat;
+    background-position: center;
+  }
 
   button.deleteButton {
     position: absolute;
     right: 0;
   }
-
-
 }
 
 div.cdk-drag-preview.darkTheme {

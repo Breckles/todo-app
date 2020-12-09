@@ -50,7 +50,6 @@ export class TodoListComponent implements OnInit {
   }
 
   private deviceIsTouchEnabled(): boolean {
-    console.log('checking');
     return (
       'ontouchstart' in window ||
       navigator.maxTouchPoints > 0 ||
