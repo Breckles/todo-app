@@ -11,7 +11,6 @@
   display: flex;
   align-items: stretch;
   transition: transform 300ms ease-in-out;
-
 }
 
 #todoLists.all {
@@ -36,6 +35,21 @@ ul.todoList {
   border-top-right-radius: var(--border-radius);
   background-color: var(--bg-secondary);
 
+  // .dragWrapper:active {
+  //   transition: box-shadow 250ms cubic-bezier(0, 0, 0.2, 1);
+  //   box-shadow:
+  //     0 -4px 6px rgba($color: var(--box-shadow-color), $alpha: 0.3),
+  //     0 4px 6px rgba($color: var(--box-shadow-color), $alpha: 0.3);
+
+  //   .todoItem {
+  //     border-bottom: none;
+  //   }
+  // }
+
+  .dragPlaceholder {
+    border-bottom: none;
+  }
+
   li {
     height: 5.2rem;
     border-bottom: 1px solid var(--todo-list-item-border-color);
@@ -49,13 +63,18 @@ ul.todoList {
   }
 
   li.todoItem {
+
     app-todo-item {
       height: 100%;
       display: block;
     }
   }
+}
 
-
+ul.todoList.cdk-drop-list-dragging {
+  .dragWrapper {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+  }
 }
 
 #listInfo {

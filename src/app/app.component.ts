@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { Themes } from './shared/themes.enum';
 
@@ -9,6 +9,9 @@ import { Themes } from './shared/themes.enum';
 })
 export class AppComponent implements OnInit {
   public currentTheme = Themes.darkTheme;
+
+  @Output()
+  public themeChanged = new EventEmitter<Themes>();
 
   ngOnInit(): void {}
 

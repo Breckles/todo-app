@@ -1,12 +1,12 @@
 @use '../../breakpoints';
 
-#todoItemWrapper {
+.todoItemWrapper {
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
 
-  button#statusToggle {
+  button.statusToggle {
     position: relative;
     width: 2rem;
     height: 2rem;
@@ -17,27 +17,29 @@
     background-color: transparent;
   }
 
-  button#statusToggle.completed {
+  button.statusToggle.completed {
     border: none;
     background-image: url('../../../assets/images/icon-check.svg'), var(--status-button-bg-color);
     background-repeat: no-repeat;
     background-position: center;
   }
 
-  #todo {
+  .todo {
     flex: 1;
     padding-top: 0.25rem;
 
     color: var(--text-main);
     font-size: 1.2rem;
+
+    user-select: none;
   }
 
-  #todo.completed {
+  .todo.completed {
     color: var(--todo-item-completed-text-color);
     text-decoration: line-through;
   }
 
-  button#deleteButton {
+  button.deleteButton {
     width: 1.3rem;
     height: 1.3rem;
     margin: 0 2rem 0 1.2rem;
@@ -52,14 +54,14 @@
 //// Tablet layout ////////////////////////////////////////////////
 
 @media screen and (min-width: breakpoints.$tablet) {
-  #todoItemWrapper {
-    button#statusToggle {
+  .todoItemWrapper {
+    button.statusToggle {
       width: 2.5rem;
       height: 2.5rem;
       margin: 0 2.2rem 0 2.5rem;
     }
 
-    #todo {
+    .todo {
       padding-top: 0.4rem;
       font-size: 1.8rem;
     }
@@ -69,9 +71,9 @@
 //// Wider screen layout ////////////////////////////////////////
 
 @media screen and (min-width: breakpoints.$widescreen) {
-  #todoItemWrapper {
-    button#statusToggle {
-      #statusToggleInnerCircle {
+  .todoItemWrapper {
+    button.statusToggle {
+      .statusToggleInnerCircle {
         display: none;
         position: absolute;
         left: 0.1rem;
@@ -84,28 +86,28 @@
       }
     }
 
-    button#deleteButton {
+    button.deleteButton {
       visibility: hidden;
     }
   }
 
 
-  #todoItemWrapper:hover {
-    button#deleteButton {
+  .todoItemWrapper:hover {
+    button.deleteButton {
       visibility: visible;
     }
 
-    #todo:hover,
+    .todo:hover,
     button#deleteButton:hover {
       cursor: pointer;
     }
 
-    button#statusToggle.active:hover {
+    button.statusToggle.active:hover {
       cursor: pointer;
       border: none;
       background-image: var(--status-button-bg-color);
 
-      #statusToggleInnerCircle {
+      .statusToggleInnerCircle {
         display: block;
       }
     }

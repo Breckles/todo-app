@@ -4,11 +4,20 @@
 
     <ul id="allList"
         class="todoList"
-        #allList>
+        cdkDropList
+        cdkDropListLockAxis='y'
+        (cdkDropListDropped)="drop($event)">
       <div *ngIf="todoItemList.length === 0">
         <li class="noTodos">You have no todos. Create some up above.</li>
       </div>
-      <div *ngFor="let item of todoItemList; index as i">
+      <div *ngFor="let item of todoItemList; index as i"
+           [ngClass]="currentTheme"
+           class="dragWrapper"
+           cdkDrag
+           [cdkDragStartDelay]='dragStartDelay'>
+        <li class="todoItem dragPlaceholder"
+            *cdkDragPlaceholder>
+        </li>
         <li class="todoItem">
           <app-todo-item [todoItem]='item'
                          [index]="i"
@@ -17,11 +26,20 @@
       </div>
     </ul>
     <ul id="activeList"
-        class="todoList">
+        class="todoList"
+        cdkDropList
+        cdkDropListLockAxis='y'
+        (cdkDropListDropped)="drop($event)">
       <div *ngIf="numActiveItems === 0">
         <li class="noTodos">You have no active todos. Relax, have a meat snack.</li>
       </div>
-      <div *ngFor="let item of todoItemList; index as i">
+      <div *ngFor="let item of todoItemList; index as i"
+           [ngClass]="currentTheme"
+           class="dragWrapper"
+           cdkDrag>
+        <li class="todoItem dragPlaceholder"
+            *cdkDragPlaceholder>
+        </li>
         <li *ngIf="item.getStatus() === 'active'"
             class="todoItem activeItem">
           <app-todo-item [todoItem]='item'
@@ -31,11 +49,20 @@
       </div>
     </ul>
     <ul id="completedList"
-        class="todoList">
+        class="todoList"
+        cdkDropList
+        cdkDropListLockAxis='y'
+        (cdkDropListDropped)="drop($event)">
       <div *ngIf="numActiveItems === todoItemList.length">
         <li class="noTodos">You have no completed todos. Get busy?</li>
       </div>
-      <div *ngFor="let item of todoItemList; index as i">
+      <div *ngFor="let item of todoItemList; index as i"
+           [ngClass]="currentTheme"
+           class="dragWrapper"
+           cdkDrag>
+        <li class="todoItem dragPlaceholder"
+            *cdkDragPlaceholder>
+        </li>
         <li *ngIf="item.getStatus() === 'completed'"
             class="todoItem completedItem">
           <app-todo-item [todoItem]='item'

@@ -1,3 +1,6 @@
+@use './app/todo-list/todo-item/todo-item.component.scss';
+@use './app/app.component.scss';
+
 *,
 *::before,
 *::after {
@@ -17,4 +20,84 @@ body {
   font-size: 18px
 }
 
+body.darkTheme {
+  --bg-main: hsl(235, 21%, 11%);
+  --bg-secondary: hsl(235, 24%, 19%);
+  --text-secondary: hsl(234, 11%, 52%);
+  --text-main: hsl(234, 39%, 85%);
+  --todo-item-completed-text-color: hsl(233, 14%, 35%);
+  --todo-list-item-border-color: hsl(233, 14%, 35%);
+  --check-circle-border-color: hsl(237, 14%, 26%);
+  --box-shadow-color: 0, 0, 0;
+  // --box-shadow-color: rgb(0, 0, 0);
+  // --light-grayish-blue-hover: hsl(236, 33%, 92%);
+
+  --banner-image: url('./assets/images/bg-mobile-dark.jpg');
+}
+
+body.lightTheme {
+  --bg-main: hsl(236, 33%, 92%);
+  --bg-secondary: hsl(0, 0%, 98%);
+  --text-secondary: hsl(236, 9%, 61%);
+  --text-main: hsl(235, 19%, 35%);
+  --todo-item-completed-text-color: hsl(233, 11%, 84%);
+  --todo-list-item-border-color: hsl(233, 11%, 84%);
+  --check-circle-border-color: hsl(233, 11%, 84%);
+  --box-shadow-color: 128, 128, 128;
+  // --box-shadow-color: rgb(128, 128, 128);
+
+  --banner-image: url('./assets/images/bg-mobile-light.jpg');
+}
+
 ////////////////////////////////////////////////////////////////////////
+
+
+div.cdk-drag-preview {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+
+  opacity: 0.7;
+  background-color: var(--bg-secondary);
+
+
+
+  button.deleteButton {
+    position: absolute;
+    right: 0;
+  }
+
+
+}
+
+div.cdk-drag-preview.darkTheme {
+  --bg-secondary: hsl(235, 24%, 19%);
+  --text-secondary: hsl(234, 11%, 52%);
+  --text-main: hsl(234, 39%, 85%);
+  --todo-item-completed-text-color: hsl(233, 14%, 35%);
+  --todo-list-item-border-color: hsl(233, 14%, 35%);
+  --check-circle-border-color: hsl(237, 14%, 26%);
+
+  box-shadow:
+    0 -4px 6px rgba($color: black, $alpha: 0.3),
+    0 4px 6px rgba($color: black, $alpha: 0.3);
+}
+
+div.cdk-drag-preview.lightTheme {
+  --bg-secondary: hsl(0, 0%, 98%);
+  --text-secondary: hsl(236, 9%, 61%);
+  --text-main: hsl(235, 19%, 35%);
+  --todo-item-completed-text-color: hsl(233, 11%, 84%);
+  --todo-list-item-border-color: hsl(233, 11%, 84%);
+  --check-circle-border-color: hsl(233, 11%, 84%);
+
+  box-shadow:
+    0 -4px 6px rgba($color: grey, $alpha: 0.3),
+    0 4px 6px rgba($color: grey, $alpha: 0.3);
+}
+
+/* Animate an item that has been dropped. */
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Component, Input, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Themes } from '../shared/themes.enum';
 
 import { Status, TodoItem } from './todo-item/todo-item.model';
 import { TodoListService } from './todo-list.service';
@@ -10,12 +12,17 @@ import { TodoListService } from './todo-list.service';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
+  @Input()
+  currentTheme!: Themes;
+
   public todoItemList!: TodoItem[];
   private listChangedSub!: Subscription;
-  public currentFilter = 'all';
   private filterChangedSub!: Subscription;
 
+  public currentFilter = 'all';
   public numActiveItems!: number;
+
+  public dragStartDelay = 0;
 
   constructor(private tls: TodoListService) {}
 
@@ -35,6 +42,20 @@ export class TodoListComponent implements OnInit {
         this.currentFilter = filter;
       }
     );
+
+    // check if user is using a touchscreen
+    if (this.deviceIsTouchEnabled()) {
+      this.dragStartDelay = 500;
+    }
+  }
+
+  private deviceIsTouchEnabled(): boolean {
+    console.log('checking');
+    return (
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      navigator.msMaxTouchPoints > 0
+    );
   }
 
   public clearCompletedItems(): void {
@@ -50,6 +71,18 @@ export class TodoListComponent implements OnInit {
     } else {
       this.numActiveItems -= 1;
     }
+  }
+
+  public drop(e: CdkDragDrop<string[]>) {
+    console.log('item dropped');
+    moveItemInArray(this.todoItemList, e.previousIndex, e.currentIndex);
+    // console.log(e);
+    // console.log(this.todoItemList);
+
+    // window.setTimeout(() => {
+    //   console.log(this.todoItemList);
+    // }, 1000);
+    this.tls.setTodoItems(this.todoItemList);
   }
 
   ngOnDestroy() {
