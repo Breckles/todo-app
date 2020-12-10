@@ -25,6 +25,8 @@
     background-size: contain;
   }
 
+  button#themeToggle:focus {}
+
   button#themeToggle.darkTheme {
     background-image: url('../../assets/images/icon-sun.svg');
   }

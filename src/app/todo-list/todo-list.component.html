@@ -36,7 +36,8 @@
       <div *ngFor="let item of todoItemList; index as i"
            [ngClass]="currentTheme"
            class="dragWrapper"
-           cdkDrag>
+           cdkDrag
+           [cdkDragStartDelay]='dragStartDelay'>
         <li class="todoItem dragPlaceholder"
             *cdkDragPlaceholder>
         </li>
@@ -59,7 +60,8 @@
       <div *ngFor="let item of todoItemList; index as i"
            [ngClass]="currentTheme"
            class="dragWrapper"
-           cdkDrag>
+           cdkDrag
+           [cdkDragStartDelay]='dragStartDelay'>
         <li class="todoItem dragPlaceholder"
             *cdkDragPlaceholder>
         </li>
