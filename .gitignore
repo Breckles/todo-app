@@ -44,3 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Key and Cert pair for testing over https
+key.pem
+cert.pem
